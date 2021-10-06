@@ -28,6 +28,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -99,6 +100,7 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
 
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -178,6 +180,8 @@ WSGI_APPLICATION = 'selfWebsite.wsgi.application'
 
 
 # Database
+db_from_env = dj_database_url.config(conn_max=500)
+DATABASES['default'].update(db_from_env)
 
 
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -296,6 +300,7 @@ USE_TZ = True
 
 
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 
@@ -304,6 +309,11 @@ jls_extract_var = "C:/Users/hp/myweb/selfWebsite/static/"
 STATICFILES_DIRS = [
     jls_extract_var,
 ]
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key fieldu type
 
 
