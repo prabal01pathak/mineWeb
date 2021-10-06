@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+{% endblock %}
+
+{% block title %}
+    About Page 
+{% endblock %}
+
+{% block content %}
+<main class="main-section">
+<div class="about">
+  <h1 class="about-name"><a href="#about" name="about">About</a></h1>
+  <div class="about-description">
+  <img src="../../static/background1.jpg" />
+  <p>Hello, My name is Prabal Pathak,<br>
+    I am a student of Computer Science and Engineering at the Rewa Engineering college.
+    I am a passionate software Developer and I am currently working on my 3rd year project 
+    I am always looking for new challenges to learn new things. 
+    </p>
+    </div>
+</div>
+    <div class="about-skills">
+    <h1 class="skills"><a href="#skills" name="skills">Skills</a></h1>
+    <p>I have a good knowledge of the following languages and frameworks:<br>
+    <div class="skills-list">
+    <ul>
+        <li>Python</li>
+        <li>Django</li>
+        <li>C++</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Bootstrap</li>
+        <li>jQuery</li>
+        <li>MySQL</li>
+        <li>Git</li>
+        <li>GitHub</li>
+    </ul>
+    </div>
+    </div>
+</main>
+<div class="about-contact">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+
+{% endblock %}
