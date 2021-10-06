@@ -60,7 +60,7 @@ DEBUG = False
 
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['prabals.herokuapp.com','127.0.0.1']
 
 
 
