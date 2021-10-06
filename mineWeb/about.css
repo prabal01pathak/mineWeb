@@ -1,0 +1,55 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.images {
+    border: 1px solid;
+}
+
+.images img {
+    max-width: 400px;
+    max-height: 400px;
+    vertical-align: middle;
+}
+
+.left-button {
+    position: absolute;
+    top: 55px;
+    left: 50px;
+
+
+}
+
+.left,.left2{
+    width: 30px;
+    height: 2px;
+    background: black;
+    margin: 18px;
+}
+.left {
+    transform: rotate(-45deg);
+}
+.left2 {
+    transform: rotate(45deg) ;
+}
+.right-button {
+    top: 55px;
+    left: 26em;
+
+
+}
+
+.right,.right2{
+    width: 30px;
+    height: 2px;
+    background: black;
+    margin: 18px;
+}
+.right {
+    transform: rotate(45deg);
+}
+.right2 {
+    transform: rotate(-45deg) ;
+}
