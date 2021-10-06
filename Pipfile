@@ -7,6 +7,7 @@ name = "pypi"
 django = "==3.2"
 requests = "*"
 dj-database-url = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
