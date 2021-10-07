@@ -305,7 +305,7 @@ STATIC_URL = '/static/'
 
 
 
-jls_extract_var = "C:/Users/hp/myweb/selfWebsite/static/"
+jls_extract_var = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     jls_extract_var,
 ]
