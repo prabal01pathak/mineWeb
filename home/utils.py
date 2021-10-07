@@ -80,10 +80,10 @@ def send_simple_mail(data):
 
 
 def send_django_mail(data):
-    Subject = f"Hey, Dear {data['name']}  from Prabal's website"
-    From = formataddr(("Prabal's",sender_mail))
-    To = formataddr(("Prabal's",reciver_mail))
-    html_content = """
+    Subject = f"Hey, Dear {data['name']}  from Prabals website"
+    From = formataddr(("Prabals",sender_mail))
+    To = formataddr(("Prabals",reciver_mail))
+    html_content = f"""
     <!DOCTYPE html>
     <html>
     <body>
