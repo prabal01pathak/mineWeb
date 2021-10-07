@@ -23,7 +23,6 @@ def index(request):
                 'mobile': mobile,
                 'message': message
             }
-            send_mail(data)
             form.save()
             return HttpResponseRedirect(reverse('home:index'))
         return render(request, 'index.html', {'form': form})
