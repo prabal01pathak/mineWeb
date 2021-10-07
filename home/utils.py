@@ -115,7 +115,7 @@ def send_django_mail(data):
         """
     msg1 = EmailMultiAlternatives(subject,"",From,[From])
     msg1.attach_alternative(html_content2,"text/html")
-    msg.content_subtype="html"
-    msg.send()
+    msg1.content_subtype="html"
+    msg1.send()
     print("done sending to admin")
     
