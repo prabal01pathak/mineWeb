@@ -28,7 +28,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -49,18 +48,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = 'django-insecure-%(hh#l-2*&(kvf*r0epgts6bl7yjuo4o^vp1e%&254_i&(d!sl'
 
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG = False
+DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['prabals.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 
@@ -100,7 +99,6 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
 
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
 
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -203,8 +201,6 @@ DATABASES = {
 
 }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 
 
@@ -256,12 +252,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ]
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
 
 
 
@@ -300,20 +290,14 @@ USE_TZ = True
 
 
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 
 
-jls_extract_var = BASE_DIR / 'static'
+jls_extract_var = "C:/Users/hp/myweb/selfWebsite/static/"
 STATICFILES_DIRS = [
     jls_extract_var,
 ]
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Default primary key fieldu type
 
 
