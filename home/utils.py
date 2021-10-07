@@ -80,17 +80,20 @@ def send_simple_mail(data):
 
 
 def send_django_mail(data):
+    print("DATA: ",data)
+    sender_mail = os.environ['EMAIL_ADDR']
+    reciver_mail = data['email']
     Subject = f"Hey, Dear {data['name']}  from Prabals website"
     From = formataddr(("Prabals",sender_mail))
     To = formataddr(("Prabals",reciver_mail))
     html_content = f"""
-            <!DOCTYPE html>
-            <html>
-            <body>
-            <div style='font-size: 1.3em;box-shadow: black 0px 0px 0px 10px,black 0px 0px 0px 20px; font-family: Georgia;background:lightblue;border:2px solid green;padding: 10px;margin: 10px;'>Hey, Dear <h1 style='display: inline;'>{data['name']}.</h1>  thank you for your interest in my website we will reply get back to you soon.</div>
-            </body>
-            </html>
-            """
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <div style='font-size: 1.3em;box-shadow: black 0px 0px 0px 10px,black 0px 0px 0px 20px; font-family: Georgia;background:lightblue;border:2px solid green;padding: 10px;margin: 10px;'>Hey, Dear <h1 style='display: inline;'>{data['name']}.</h1>  thank you for your interest in my website we will reply get back to you soon.</div>
+    </body>
+    </html>
+    """, subtype='html')
     msg = EmailMultiAlternatives(Subject,"hello",From,[To])
     msg.attach_alternative(html_content,"text/html")
     msg.content_subtype="html"
