@@ -323,4 +323,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+EMAIL_HOST = os.environ['SIB_SMTP_SERVER']
+EMAIL_PORT = os.environ['SIB_SMTP_PORT']
+EMAIL_HOST_USER = os.environ['SIB_LOGIN']
+EMAIL_HOST_PASSWORD = os.environ['SIB_PASS']
 

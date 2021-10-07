@@ -6,6 +6,7 @@ import re
 import smtplib
 from email.message import EmailMessage
 from email.utils import formataddr
+from django.core.mail import EmailMultiAlternatives 
 
 
 def medium_blog(url):
@@ -42,7 +43,7 @@ def git_projects(url):
         return projects
 
 
-def send_mail(data):
+def send_simple_mail(data):
     sender_mail = os.environ['EMAIL_ADDR']
     reciver_mail = data['email']
     password = os.environ['PASS']
@@ -76,3 +77,21 @@ def send_mail(data):
         smtp.send_message(msg)
         smtp.send_message(msg1)
         print('done')
+
+
+def send_django_mail(data):
+    Subject = f"Hey, Dear {data['name']}  from Prabal's website"
+    From = formataddr(("Prabal's",sender_mail))
+    To = formataddr(("Prabal's",reciver_mail))
+    html_content = """
+    <!DOCTYPE html>
+    <html>
+    <body>
+    <div style='font-size: 1.3em;box-shadow: black 0px 0px 0px 10px,black 0px 0px 0px 20px; font-family: Georgia;background:lightblue;border:2px solid green;padding: 10px;margin: 10px;'>Hey, Dear <h1 style='display: inline;'>{data['name']}.</h1>  thank you for your interest in my website we will reply get back to you soon.</div>
+    </body>
+    </html>
+    """, subtype='html')
+    msg = EmailMultiAlternatives(Subject,"hello",From,[To])
+    msg.attach_alternative(html_content,"text/html")
+    msg.content_subtype="html"
+    msg.send()

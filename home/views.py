@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import SubscriberForm
 from django.urls import reverse
-from .utils import medium_blog, git_projects, send_mail
+from .utils import medium_blog, git_projects, send_simple_mail,send_django_mail
 
 
 # Create your views here.
@@ -23,6 +23,7 @@ def index(request):
                 'mobile': mobile,
                 'message': message
             }
+            send_django_mail(data)
             form.save()
             return HttpResponseRedirect(reverse('home:index'))
         return render(request, 'index.html', {'form': form})
