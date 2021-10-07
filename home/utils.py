@@ -80,7 +80,7 @@ def send_simple_mail(data):
 
 
 def send_django_mail(data):
-    print("DATA: ",data)
+    #send mail to user
     sender_mail = os.environ['EMAIL_ADDR']
     reciver_mail = data['email']
     Subject = f"Hey, Dear {data['name']}  from Prabals website"
@@ -98,3 +98,24 @@ def send_django_mail(data):
     msg.attach_alternative(html_content,"text/html")
     msg.content_subtype="html"
     msg.send()
+    print("done sending to User")
+
+    #send user message to admin
+    subject = f"You have New User"
+    html_content2 = f"""
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <div style='font-size: 1.3em;box-shadow: black 0px 0px 0px 10px,black 0px 0px 0px 20px; font-family: Georgia;background:lightblue;border:2px solid green;padding: 10px;margin: 10px;'>Hey, New User <h1 style='display: inline;'>{data['name']}.</h1> <p>Message: {data['message']}<br>
+        Mobile: {data['mobile']}<br>
+        Email: {data['email']}</p>
+        </div>
+        </body>
+        </html>
+        """
+    msg1 = EmailMultiAlternatives(subject,"",From,[From])
+    msg1.attach_alternative(htmo_content2,"text/html")
+    msg.content_subtype="html"
+    msg.send()
+    print("done sending to admin")
+    
