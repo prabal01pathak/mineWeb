@@ -30,6 +30,8 @@ def medium_blog(url):
 
 
 def git_projects(url):
+
+    #Projects form git public repos.
     r = requests.get(url)
     if r.status_code == 200:
         data = r.json()

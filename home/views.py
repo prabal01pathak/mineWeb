@@ -31,9 +31,7 @@ def index(request):
         "https://api.rss2json.com/v1/api.json?rss_url=https://prabal-pathak.medium.com/feed")
     git_repos = git_projects(
         'https://api.github.com/users/prabal01pathak/repos')
-    blog2 = medium_blog(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://mgalkin.medium.com/feed")
-
+    blog2 = ()
     context = {
         'form': form,
         'blogs': blog,
