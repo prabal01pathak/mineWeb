@@ -16,8 +16,8 @@ class HomePage(models.Model):
         return self.name
 
 class OtherThing(models.Model):
-    Heading = models.CharField(max_length=200,default="none")
-    Title = models.CharField(max_length=200)
+    Heading = models.CharField(max_length=200,default="none",blank=True)
+    Title = models.CharField(max_length=200,blank=True)
     File = models.FileField(upload_to="files/",blank=True)
     any_other_html = models.TextField(blank="True",default="none")
     any_image = models.ImageField(blank=True,upload_to="images/")
