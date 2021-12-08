@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from .forms import SubscriberForm
 from django.urls import reverse
 from .utils import medium_blog, git_projects, send_simple_mail,send_django_mail
+from .models import OtherThing,Image,Certificates
 
 
 # Create your views here.
@@ -9,6 +10,7 @@ from .utils import medium_blog, git_projects, send_simple_mail,send_django_mail
 
 def index(request):
     form = SubscriberForm()
+    image = Image.objects.all()
     if request.method == "POST":
         form = SubscriberForm(request.POST)
         if form.is_valid():
@@ -21,7 +23,7 @@ def index(request):
                 'name': name,
                 'email': email,
                 'mobile': mobile,
-                'message': message
+                'message': message,
             }
             send_django_mail(data)
             form.save()
@@ -42,9 +44,21 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about.html', {
-        "name": "Prabal Pathak",
-    })
+    models = OtherThing.objects.all()
+    image = Image.objects.all()
+    if len(image) > 0:
+        image = image[0]
+    else:
+        image=False
+    certificates = Certificates.objects.all()
+    context = {
+            "otherThing":models,
+            "image":image,
+            "name": "Prabal Pathak",
+            'certificates':certificates,
+
+            }
+    return render(request, 'about.html', context)
 
 def books(requests):
     return render(requests, 'books.html')

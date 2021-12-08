@@ -3,6 +3,12 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'about.css' %}">
+<style>
+    .testdome-certificate-stamp {
+        margin: 2em;
+        height: 500px;
+    }
+</style>
 {% endblock %}
 
 {% block title %}
@@ -13,8 +19,14 @@
 <main class="main-section">
 <div class="about">
   <h1 class="about-name"><a href="#about" name="about">About</a></h1>
-  <div class="about-description">
-  <img src="../../static/background1.jpg" />
+
+<!-- description Section -->
+<div class="about-description">
+	{% if  image %}
+		<img src={{image.Image.url}} height=500px  />
+	{% else %}
+		<img src="{% static 'background1.jpg' %}" >
+	{% endif %}
   <p>Hello, My name is Prabal Pathak,<br>
     I am a student of Computer Science and Engineering at the Rewa Engineering college.
     I am a passionate software Developer and I am currently working on my 3rd year project 
@@ -22,6 +34,15 @@
     </p>
     </div>
 </div>
+<!-- end of description Section -->
+
+  <h1 class="about-name"><a href="#about" name="about">CERTIFICATES</a></h1>
+
+ {% for certificate in certificates %}
+	 {{certificate.certificate_html|safe}}
+ {% endfor %}
+
+
     <div class="about-skills">
     <h1 class="skills"><a href="#skills" name="skills">Skills</a></h1>
     <p>I have a good knowledge of the following languages and frameworks:<br>
@@ -41,6 +62,28 @@
     </ul>
     </div>
     </div>
+
+    <div id="otherThing">
+	    {% for things in otherThing %}
+	    	  {% if things.Heading != "none" %}
+		    <h1 class="about-name"><a href="#Resume" name="Resume">{{things.Heading}}</a></h1>
+		    {% endif %}
+		<div class="otherThing-link" style="margin: 2em;">
+		{% if things.File %}
+			<a href={{things.File.url}}>
+			{{things.Title}}</a>
+		{% endif %}
+		</div>
+		{% if things.any_other_html != "none" %}
+			{{things.any_other_html|safe}}
+		{% endif %}
+		{% if things.any_image %}
+			<img src={{things.any_image.url}} alt={{things.title}}>
+		{% endif %}
+			
+	    {% endfor %}
+    </div>
+
 </main>
 <div class="about-contact">
 </div>
