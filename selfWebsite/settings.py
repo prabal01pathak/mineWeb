@@ -61,8 +61,8 @@ DEBUG = True
 
 
 
-# ALLOWED_HOSTS = ['prabals.herokuapp.com','127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ ALLOWED_HOSTS = ['prabals.herokuapp.com','127.0.0.1']
+#ALLOWED_HOSTS = ['*']
 
 
 
@@ -205,8 +205,8 @@ DATABASES = {
 
 }
 
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 
@@ -259,7 +259,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-"""
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
@@ -267,7 +266,6 @@ SECURE_SSL_REDIRECT = True
 SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-"""
 
 
 
